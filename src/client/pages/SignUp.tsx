@@ -1,6 +1,7 @@
 export const SignUp = () => {
   return (
-    <div>SignUp</div>
+    <div>You're made it to the sign up page, congrats!!!!
+    </div>
   )
 }
 

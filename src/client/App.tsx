@@ -1,15 +1,25 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Outlet } from 'react-router-dom'
 import NavBar from './components/NavBar'
 import Login from './pages/Login'
 import SignUp from './pages/SignUp'
 
+const Layout = () => {
+  return (
+    <>
+    <NavBar/>
+    <Outlet/>
+    </>
+  )
+}
+
 const App = () => {
   return (
     <BrowserRouter>
-    <NavBar />
       <Routes>
-          <Route path='/' element={<Login />} />
-          <Route path='/signup'element={<SignUp />} />
+          <Route path='/' element={<Layout />}>
+            <Route index element={<Login />} />
+            <Route path='signup' element={<SignUp />} />
+          </Route>
       </Routes>
     </BrowserRouter>
   )

@@ -1,11 +1,14 @@
 import express, { Request, Response, NextFunction, Application } from 'express'
 import path from 'path'
 import 'dotenv/config';
+import history from 'connect-history-api-fallback'
 
 //Routers
 import authRouter from './routes/authRouter';
 
 const app: Application = express();
+
+app.use(history());
 
 app.use('/auth', authRouter);
 
