@@ -4,11 +4,14 @@ import 'dotenv/config';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import authRouter from './routes/authRouter';
+import logsRouter from './routes/logsRouter';
+import cookieParser from 'cookie-parser';
 import cors from 'cors';
 
 const app: Application = express();
 app.use(express.json());
 app.use(cors());
+app.use(cookieParser());
 dotenv.config();
 
 const db: string = process.env.URI!;
@@ -17,6 +20,7 @@ mongoose.connect(db).then(() => {
 });
 
 app.use('/auth', authRouter);
+app.use('/logs', logsRouter);
 
 app.get('*', (_req: Request, res: Response) => {
   res.sendFile(path.resolve(__dirname, '../client/index.html'));
