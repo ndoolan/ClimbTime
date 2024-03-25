@@ -8,10 +8,8 @@ import Register from './pages/Register';
 const Layout = () => {
   return (
     <>
-      <div>
-        <NavBar />
-        <Outlet />
-      </div>
+      <NavBar />
+      <Outlet />
     </>
   );
 };
