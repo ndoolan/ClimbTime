@@ -1,68 +1,46 @@
-import {
-  Flex,
-  FormControl,
-  FormLabel,
-  Heading,
-  Input,
-  Select,
-  Button,
-  Checkbox,
-} from '@chakra-ui/react';
-import { useForm } from 'react-hook-form';
+import { Card, CardBody, Text, Button } from '@chakra-ui/react';
 import axios from 'axios';
+import { useState } from 'react';
 
-const submitLog = async (data: any) => {
-  console.log(data);
-  try {
-    axios.post('logs/quickLog', data).then((data) => console.log(data));
-  } catch (error) {
-    console.log(`Error sending form to Sever. Error: ${error}`);
+interface QuickLogProps {
+  name: string;
+  location: string;
+  grade: number;
+  flash: boolean;
+  _id: string;
+}
+
+const QuickLog: React.FC<QuickLogProps> = ({
+  name,
+  location,
+  grade,
+  flash,
+  _id,
+}) => {
+  const deleteLog = async () => {
+    try {
+      const res = await axios.post('/logs/remove', { _id: _id });
+      setRemove(res.data);
+    } catch (error) {
+      console.log('Error deleting log:', error);
+    }
+  };
+  const [remove, setRemove] = useState(false);
+
+  if (remove) {
+    return <Text>Deleted</Text>;
   }
-};
-
-const QuickLog = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
 
   return (
-    <form onSubmit={handleSubmit((data) => submitLog(data))}>
-      <Flex direction="column">
-        <Heading>Quick Log</Heading>
-        <FormControl>
-          <FormLabel>Name</FormLabel>
-          <Input type="text" placeholder="Climb Name" {...register('name')} />
-        </FormControl>
-        <Select placeholder="Grade" {...register('grade')}>
-          <option value={0}>{0}</option>
-          <option value={1}>{1}</option>
-          <option value={2}>{2}</option>
-          <option value={3}>3</option>
-          <option value={4}>4</option>
-          <option value={5}>5</option>
-          <option value={6}>6</option>
-          <option value={7}>7</option>
-          <option value={8}>8</option>
-          <option value={9}>9</option>
-          <option value={10}>10</option>
-          <option value={11}>11</option>
-          <option value={12}>12</option>
-          <option value={13}>13</option>
-          <option value={14}>14</option>
-          <option value={15}>15</option>
-          <option value={16}>16</option>
-          <option value={17}>17</option>
-        </Select>
-        <FormControl>
-          <FormLabel>Location</FormLabel>
-          <Input type="text" placeholder="Location" {...register('location')} />
-        </FormControl>
-        <Checkbox {...register('flash')}>Flash?</Checkbox>
-        <Button type="submit">Submit</Button>
-      </Flex>
-    </form>
+    <Card>
+      <CardBody>
+        <Text>Name: {name}</Text>
+        <Text>Location: {location}</Text>
+        <Text>Grade: {grade}</Text>
+        {flash ? <Text>Yes</Text> : <Text>No</Text>}
+        <Button onClick={deleteLog}>Delete</Button>
+      </CardBody>
+    </Card>
   );
 };
 

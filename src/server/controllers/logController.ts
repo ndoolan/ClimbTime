@@ -4,7 +4,7 @@ import User from '../models/models';
 interface logController {
   getLogs: (req: Request, res: Response, next: NextFunction) => void;
   createLog: (req: Request, res: Response, next: NextFunction) => void;
-  //   deleteLog: (req: Request, res: Response, next: NextFunction) => void;
+  removeLog: (req: Request, res: Response, next: NextFunction) => void;
 }
 
 const logController: logController = {
@@ -13,8 +13,7 @@ const logController: logController = {
       const { cookies }: { cookies: Record<string, string> } = req;
       const ctUid = cookies['ct-uid'];
       const user = await User.findById({ _id: ctUid });
-      console.log(user);
-      res.locals.totalClimbs = user?.totalClimbs;
+      res.locals.logs = user?.logs;
       return next();
     } catch (error) {
       return next({
@@ -27,17 +26,15 @@ const logController: logController = {
 
   async createLog(req, res, next) {
     try {
-      console.log(req.body);
       const { cookies }: { cookies: Record<string, string> } = req;
       const ctUid = cookies['ct-uid'];
       const { name, grade, location, flash } = req.body;
-      // const user = await User.findById({_id: Ticklist_ID })
 
       const user = await User.findByIdAndUpdate(
         { _id: ctUid },
         {
           $push: {
-            totalClimbs: {
+            logs: {
               name: name,
               grade: grade,
               location: location,
@@ -50,9 +47,7 @@ const logController: logController = {
       if (!user) {
         throw new Error('User not found');
       }
-
-      // res.locals is currently one behind created climb although new climbs go through correctly
-      res.locals.totalClimbs = user.totalClimbs;
+      res.locals.logs = user?.logs;
       return next();
     } catch (error) {
       return next({
@@ -62,26 +57,35 @@ const logController: logController = {
       });
     }
   },
+  async removeLog(req, _res, next) {
+    console.log('inside dlete ');
+    try {
+      const { cookies }: { cookies: Record<string, string> } = req;
+      const ctUid = cookies['ct-uid'];
+      const { _id } = req.body;
 
-  //   async deleteLog(req, res, next) {
-  //     console.log('inside dlete ');
-  //     try {
-  //       const { name } = req.body;
-  //       const { Ticklist_ID } = req.cookies;
-  //       console.log(Ticklist_ID);
-  //       const user = await User.findById({ _id: Ticklist_ID });
-  //       console.log(user);
-  //       // user.totalClimbs.findOneAndDelete(name)
-  //       // console.log(user.totalClimbs)
-  //       // res.locals.totalClimbs = user.totalClimbs
-  //     } catch (error) {
-  //       return next({
-  //         log: 'error occurred deleting the climb',
-  //         status: 400,
-  //         message: { error: 'deletion method' },
-  //       });
-  //     }
-  //   },
+      const user = await User.findByIdAndUpdate(
+        { _id: ctUid },
+        {
+          $pull: {
+            logs: {
+              _id: _id,
+            },
+          },
+        }
+      );
+      console.log(user?.logs);
+      // console.log(user.totalClimbs)
+      // res.locals.totalClimbs = user.totalClimbs
+      return next();
+    } catch (error) {
+      return next({
+        log: 'error occurred deleting the climb',
+        status: 400,
+        message: { error: 'deletion method' },
+      });
+    }
+  },
 };
 
 export default logController;

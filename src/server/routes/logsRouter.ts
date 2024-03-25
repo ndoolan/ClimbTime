@@ -7,10 +7,13 @@ const logsRouter = express.Router();
 // All route names are incorrect
 
 // Get all Logs
-logsRouter.post('/getlogs', (_req: Request, res: Response) => {
-  console.log('outside mid');
-  res.status(200).json(res.locals.user);
-});
+logsRouter.get(
+  '/getlogs',
+  logController.getLogs,
+  (_req: Request, res: Response) => {
+    res.status(200).json(res.locals.logs);
+  }
+);
 
 // Create a new Quick Log
 logsRouter.post(
@@ -21,8 +24,12 @@ logsRouter.post(
   }
 );
 
-logsRouter.post('/delete', (_req: Request, res: Response) => {
-  res.status(200).json('deleted');
-});
+logsRouter.post(
+  '/remove',
+  logController.removeLog,
+  (_req: Request, res: Response) => {
+    res.status(200).json(true);
+  }
+);
 
 export default logsRouter;

@@ -1,11 +1,13 @@
 import { Flex } from '@chakra-ui/react';
-import QuickLog from '../components/QuickLog/QuickLog';
+import QuickLogForm from '../components/QuickLogForm/QuickLogForm';
+import LogDisplay from '../components/LogDisplay/LogDisplay';
 // import axios from 'axios';
 
 const Logs = () => {
   return (
-    <Flex>
-      <QuickLog />
+    <Flex direction="row" justifyContent="center" gap={400}>
+      <QuickLogForm />
+      <LogDisplay />
     </Flex>
   );
 };
