@@ -11,17 +11,17 @@ import {
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
 
-const submitQuickLog = async (data: any) => {
+const submitLog = async (data: any) => {
   console.log(data);
   try {
-    axios.post('logs/quickLog', data).then((data) => console.log(data));
+    axios.post('logs/log', data).then((data) => console.log(data));
     // reset();
   } catch (error) {
     console.log(`Error sending form to Sever. Error: ${error}`);
   }
 };
 
-const QuickLogForm = () => {
+const LogForm = () => {
   const {
     register,
     handleSubmit,
@@ -30,9 +30,9 @@ const QuickLogForm = () => {
   } = useForm();
 
   return (
-    <form onSubmit={handleSubmit((data) => submitQuickLog(data))}>
+    <form onSubmit={handleSubmit((data) => submitLog(data))}>
       <Flex direction="column" gap={6}>
-        <Heading>Quick Log</Heading>
+        <Heading>Log</Heading>
         <FormControl>
           <FormLabel>Name</FormLabel>
           <Input type="text" placeholder="Climb Name" {...register('name')} />
@@ -68,4 +68,4 @@ const QuickLogForm = () => {
   );
 };
 
-export default QuickLogForm;
+export default LogForm;
