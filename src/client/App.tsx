@@ -1,18 +1,31 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import NavBar from './components/NavBar';
-import Login from './pages/Login';
-import SignUp from './pages/SignUp';
+import { Outlet, Route, Routes } from 'react-router-dom';
+import NavBar from './components/NavBar/NavBar';
+import Metrics from './pages/Metrics';
+import NotFound from './pages/NotFound';
+import Logs from './pages/Logs';
+import Register from './pages/Register';
+
+const Layout = () => {
+  return (
+    <>
+      <NavBar />
+      <Outlet />
+    </>
+  );
+};
 
 const App = () => {
   return (
-    <BrowserRouter>
-      This is dated. Checking contribution settings.
-      <NavBar />
+    <>
       <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/signup" element={<SignUp />} />
+        <Route path="/" element={<Layout />}>
+          <Route path="/register" element={<Register />} />
+          <Route path="/metrics" element={<Metrics />} />
+          <Route path="/logs" element={<Logs />} />
+        </Route>
+        <Route path="*" element={<NotFound />} />
       </Routes>
-    </BrowserRouter>
+    </>
   );
 };
 
