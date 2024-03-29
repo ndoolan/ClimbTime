@@ -25,8 +25,8 @@ const QuickLogForm = () => {
   const {
     register,
     handleSubmit,
-    reset, // reset form method, scoping issue
-    formState: { errors },
+    // reset, // reset form method, scoping issue
+    // formState: { errors },
   } = useForm();
 
   return (

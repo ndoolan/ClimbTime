@@ -2,7 +2,7 @@ import * as path from 'path';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import { Configuration as WebpackConfiguration } from 'webpack';
 import { Configuration as WepbackDevServerConfiguration } from 'webpack-dev-server';
-import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
+// import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 import Dotenv from 'dotenv-webpack';
 
 interface Configuration extends WebpackConfiguration {
@@ -35,14 +35,14 @@ const config: Configuration = {
       },
       {
         test: /\.s?css$/i,
-          use: [
-              'style-loader',
-              'css-loader',
-              {
-                  loader: 'postcss-loader',
-              }
-              , 'sass-loader'
-          ],
+        use: [
+          'style-loader',
+          'css-loader',
+          {
+            loader: 'postcss-loader',
+          },
+          'sass-loader',
+        ],
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
@@ -60,7 +60,9 @@ const config: Configuration = {
     },
     historyApiFallback: true,
     proxy: {
-      '/': 'http://localhost:3000',
+      context: ['/api'],
+      target: 'http://localhost:3000',
+      // '/': 'http://localhost:3000',
     },
     port: 8080,
     hot: true,
@@ -70,9 +72,8 @@ const config: Configuration = {
       template: './src/client/index.html',
     }),
     new Dotenv(),
-    new ReactRefreshWebpackPlugin(),
+    // new ReactRefreshWebpackPlugin(),
   ],
-  devtool: 'source-map',
 };
 
 export default config;
