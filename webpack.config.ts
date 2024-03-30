@@ -60,8 +60,8 @@ const config: Configuration = {
     },
     historyApiFallback: true,
     proxy: {
-      context: ['/api'],
-      target: 'http://localhost:3000',
+      // context: ['/api'],
+      // target: 'http://localhost:3000',
       // '/': 'http://localhost:3000',
     },
     port: 8080,

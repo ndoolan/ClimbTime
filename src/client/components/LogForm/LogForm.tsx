@@ -7,6 +7,7 @@ import {
   Select,
   Button,
   Checkbox,
+  Textarea,
 } from '@chakra-ui/react';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
@@ -60,6 +61,17 @@ const LogForm = () => {
         <FormControl>
           <FormLabel>Location</FormLabel>
           <Input type="text" placeholder="Location" {...register('location')} />
+        </FormControl>
+        <FormControl>
+          <FormLabel>Attempts?</FormLabel>
+          <Input type="text" placeholder="Location" {...register('attempts')} />
+        </FormControl>
+        <FormControl>
+          <FormLabel>Comments:</FormLabel>
+          <Textarea
+            placeholder="Great movement, but top crimp broke..."
+            {...register('comments')}
+          />
         </FormControl>
         <Checkbox {...register('flash')}>Flash?</Checkbox>
         <Button type="submit">Submit</Button>
