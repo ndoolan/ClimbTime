@@ -15,6 +15,17 @@ logsRouter.get(
   }
 );
 
+// Create Log
+logsRouter.post(
+  '/create',
+  logController.createLog,
+  (_req: Request, res: Response) => {
+    res.status(200).json('ok');
+  }
+);
+
+// Fix Log controller
+
 // Create a new Quick Log
 logsRouter.post(
   '/quickLog',

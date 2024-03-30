@@ -19,8 +19,8 @@ const handleLogin = async (
   password: string
 ) => {
   e.preventDefault();
-  //   username = usernameRef?.current?.value;
-  //   password = passwordRef?.current?.value;
+  username = usernameRef?.current?.value;
+  password = passwordRef?.current?.value;
   console.log(username, password);
   //   console.log(usernameRef?.current?.value, passwordRef?.current?.value);
   try {

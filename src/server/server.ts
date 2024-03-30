@@ -1,5 +1,5 @@
 import express, { Request, Response, NextFunction, Application } from 'express';
-// import path from 'path';
+import path from 'path';
 import 'dotenv/config';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
@@ -22,9 +22,9 @@ mongoose.connect(db).then(() => {
 app.use('/auth', authRouter);
 app.use('/logs', logsRouter);
 
-// app.get('*', (_req: Request, res: Response) => {
-//   res.sendFile(path.resolve(__dirname, '../client/index.html'));
-// });
+app.get('*', (_req: Request, res: Response) => {
+  res.sendFile(path.resolve(__dirname, '../client/index.html'));
+});
 
 // global error handler
 app.use(

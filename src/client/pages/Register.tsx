@@ -11,6 +11,7 @@ import axios from 'axios';
 
 const submitForm = async (data: any) => {
   try {
+    console.log('data', data);
     axios.post('auth/register', data).then((data) => console.log(data));
   } catch (error) {
     console.log(`Error sending form to Sever. Error: ${error}`);
