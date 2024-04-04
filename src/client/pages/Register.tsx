@@ -7,16 +7,9 @@ import {
   Button,
 } from '@chakra-ui/react';
 import { useForm } from 'react-hook-form';
-import axios from 'axios';
-
-const submitForm = async (data: any) => {
-  try {
-    console.log('data', data);
-    axios.post('auth/register', data).then((data) => console.log(data));
-  } catch (error) {
-    console.log(`Error sending form to Sever. Error: ${error}`);
-  }
-};
+import { useAppDispatch } from '../hooks/dispatch';
+import { registerUser } from '../store/reducers/userReducer';
+import { registerCreds } from '../store/reducers/userReducer';
 
 export const Register = () => {
   const {
@@ -25,8 +18,17 @@ export const Register = () => {
     formState: { errors },
   } = useForm();
 
+  const submitForm = async (data: any) => {
+    try {
+      console.log('data', data);
+      useAppDispatch(registerUser());
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
-    <form onSubmit={handleSubmit((data) => submitForm(data))}>
+    <form onSubmit={handleSubmit(submitForm)}>
       <Flex direction="column" p={4} gap={4}>
         <FormControl>
           <FormLabel>Username</FormLabel>
