@@ -22,9 +22,8 @@ authRouter.post(
 authRouter.post(
   '/register',
   userController.createUser,
-  cookieController.setCookie,
+  // cookieController.setCookie,
   (_req: Request, res: Response) => {
-    console.log('outside mid');
     res.status(200).json(res.locals.user);
   }
 );

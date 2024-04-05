@@ -20,7 +20,7 @@ interface loginCreds {
   password: string;
 }
 
-export interface registerCreds {
+export interface registerForm {
   username: string;
   password: string;
   email: string;
@@ -45,16 +45,16 @@ export const login = createAsyncThunk(
 
 export const registerUser = createAsyncThunk(
   '/user/register',
-  async (registerCreds: registerCreds) => {
+  async (registerForm: registerForm, thunkAPI) => {
     try {
       const response = await axios.post('http://localhost:3000/auth/register', {
-        registerCreds: registerCreds,
+        registerForm,
       });
       return response.data;
     } catch (error: any) {
       // fix type any
       console.log(error);
-      // return thunkAPI.rejectWithValue(error.response.data.errors);
+      return thunkAPI.rejectWithValue(error.response.data.errors);
     }
   }
 );

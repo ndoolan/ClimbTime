@@ -9,19 +9,25 @@ import {
 import { useForm } from 'react-hook-form';
 import { useAppDispatch } from '../hooks/dispatch';
 import { registerUser } from '../store/reducers/userReducer';
-import { registerCreds } from '../store/reducers/userReducer';
+import { registerForm } from '../store/reducers/userReducer';
+
+// import { useRef } from 'react';
+// const usernameRef = useRef(null);
+// const passwordRef = useRef(null);
+// const emailRef = useRef(null);
 
 export const Register = () => {
+  const dispatch = useAppDispatch();
+
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm<registerForm>();
 
-  const submitForm = async (data: any) => {
+  const submitForm = async (registerForm: registerForm) => {
     try {
-      console.log('data', data);
-      useAppDispatch(registerUser());
+      dispatch(registerUser(registerForm));
     } catch (error) {
       console.log(error);
     }

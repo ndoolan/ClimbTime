@@ -14,7 +14,7 @@ interface userController {
 const userController: userController = {
   async createUser(req, res, next) {
     try {
-      const { username, password, email } = req.body;
+      const { username, password, email } = req.body.registerForm;
 
       // Check if username is taken
       const user = await User.findOne({ username: username });
