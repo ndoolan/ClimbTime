@@ -16,8 +16,8 @@ interface initialState {
 }
 
 export interface loginCreds {
-  username: string;
-  password: string;
+  username: string | undefined;
+  password: string | undefined;
 }
 
 export interface registerForm {

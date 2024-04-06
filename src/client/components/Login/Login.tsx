@@ -42,8 +42,8 @@ import { useAppDispatch } from '../../hooks/dispatch';
 
 const Login = () => {
   const dispatch = useAppDispatch();
-  const usernameRef = useRef<string>('');
-  const passwordRef = useRef<string>('');
+  const usernameRef = useRef<HTMLInputElement>(null);
+  const passwordRef = useRef<HTMLInputElement>(null);
 
   // Temp Fix for Obj Param
   const loginCreds: loginCreds = {
@@ -51,14 +51,15 @@ const Login = () => {
     password: passwordRef?.current?.value,
   };
 
-  const handleLogin = async (e: any, loginCreds: loginCreds) => {
+  const handleLogin = async (e: any, creds: loginCreds) => {
     e.preventDefault();
-    console.log('presend', loginCreds);
+    console.log('presend', creds);
     // console.log();
     // e.preventDefault()
     try {
-      console.log('insideHL', loginCreds);
-      dispatch(loginUser(loginCreds));
+      console.log('insideHL', creds);
+      console.log('checking ref', creds.username);
+      dispatch(loginUser(creds));
     } catch (error) {
       console.log(error);
     }
