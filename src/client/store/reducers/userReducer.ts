@@ -15,7 +15,7 @@ interface initialState {
   success: boolean;
 }
 
-interface loginCreds {
+export interface loginCreds {
   username: string;
   password: string;
 }
