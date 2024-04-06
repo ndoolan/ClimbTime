@@ -3,7 +3,8 @@ import QuickLogForm from '../components/QuickLogForm/QuickLogForm';
 import LogDisplay from '../components/LogDisplay/LogDisplay';
 import LogForm from '../components/LogForm/LogForm';
 import { useState } from 'react';
-// import axios from 'axios';
+import { useAppDispatch } from '../hooks/dispatch';
+import { loginUser } from '../store/reducers/userReducer';
 
 const Logs = () => {
   const [toggle, setToggle] = useState(false);

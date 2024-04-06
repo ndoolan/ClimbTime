@@ -8,13 +8,7 @@ import {
 } from '@chakra-ui/react';
 import { useForm } from 'react-hook-form';
 import { useAppDispatch } from '../hooks/dispatch';
-import { registerUser } from '../store/reducers/userReducer';
-import { registerForm } from '../store/reducers/userReducer';
-
-// import { useRef } from 'react';
-// const usernameRef = useRef(null);
-// const passwordRef = useRef(null);
-// const emailRef = useRef(null);
+import { registerUser, registerForm } from '../store/reducers/userReducer';
 
 export const Register = () => {
   const dispatch = useAppDispatch();

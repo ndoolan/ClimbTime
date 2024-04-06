@@ -26,7 +26,7 @@ export interface registerForm {
   email: string;
 }
 
-export const login = createAsyncThunk(
+export const loginUser = createAsyncThunk(
   '/user/login',
   async (loginCreds: loginCreds, thunkAPI) => {
     try {
@@ -64,15 +64,15 @@ const userSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(login.pending, (state, _action) => {
+    builder.addCase(loginUser.pending, (state, _action) => {
       state.isLoading = true;
     });
-    builder.addCase(login.fulfilled, (state, action) => {
+    builder.addCase(loginUser.fulfilled, (state, action) => {
       state.currentUser = action.payload;
       state.success = true;
       state.isLoading = false;
     });
-    builder.addCase(login.rejected, (state, action) => {
+    builder.addCase(loginUser.rejected, (state, action) => {
       state.error = action.payload;
     });
     builder.addCase(registerUser.pending, (state, _action) => {
