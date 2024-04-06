@@ -40,20 +40,29 @@ import { useAppDispatch } from '../../hooks/dispatch';
 // let username: string;
 // let password: string;
 
-
 const Login = () => {
   const dispatch = useAppDispatch();
-  const usernameRef = useRef(null);
-  const passwordRef = useRef(null);
+  const usernameRef = useRef<string>('');
+  const passwordRef = useRef<string>('');
 
-  const handleLogin = async (e, {username, password} : loginCreds) => {
-    e.preventDefault()
+  // Temp Fix for Obj Param
+  const loginCreds: loginCreds = {
+    username: usernameRef?.current?.value,
+    password: passwordRef?.current?.value,
+  };
+
+  const handleLogin = async (e: any, loginCreds: loginCreds) => {
+    e.preventDefault();
+    console.log('presend', loginCreds);
+    // console.log();
+    // e.preventDefault()
     try {
-      dispatch(loginUser({username, password}))
+      console.log('insideHL', loginCreds);
+      dispatch(loginUser(loginCreds));
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
@@ -68,17 +77,7 @@ const Login = () => {
           <ModalBody>
             <Input type="text" placeholder="username" ref={usernameRef} />
             <Input type="password" placeholder="password" ref={passwordRef} />
-            <Button
-              onClick={(e) =>
-                handleLogin(
-                  e,
-                  {usernameRef?.current?.value,
-                  passwordRef?.current?.value}
-                )
-              }
-            >
-              Submit
-            </Button>
+            <Button onClick={(e) => handleLogin(e, loginCreds)}>Submit</Button>
           </ModalBody>
 
           <ModalFooter>
