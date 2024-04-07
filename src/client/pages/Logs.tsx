@@ -5,6 +5,7 @@ import LogForm from '../components/LogForm/LogForm';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import type { RootState } from '../store';
+import NoUser from '../components/NoUser/NoUser';
 
 const Logs = () => {
   const currentUser = useSelector((state: RootState) => state.user.currentUser);
@@ -16,7 +17,7 @@ const Logs = () => {
   };
 
   if (!currentUser) {
-    return <p>Please make an account first pal</p>;
+    return <NoUser />;
   }
 
   return (
