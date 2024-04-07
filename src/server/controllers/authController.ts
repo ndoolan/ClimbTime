@@ -42,7 +42,7 @@ const userController: userController = {
   async verifyUser(req, res, next) {
     try {
       console.log('verify body', req.body);
-      const { username, password } = req.body;
+      const { username, password } = req.body.loginCreds;
       const user = await User.findOne({ username: username });
 
       if (!user) {
