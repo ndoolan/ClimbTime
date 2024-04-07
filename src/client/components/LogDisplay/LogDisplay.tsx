@@ -2,7 +2,6 @@ import QuickLog from '../QuickLog/QuickLog';
 import { Flex } from '@chakra-ui/react';
 import { useState } from 'react';
 import axios, { AxiosResponse } from 'axios';
-// import { useAppDispatch } from '../../hooks/dispatch';
 
 interface quickLogData {
   name: string;
@@ -13,7 +12,6 @@ interface quickLogData {
 }
 
 const LogDisplay = () => {
-  // const dispatch = useAppDispatch();
   // Update to useEffect
   const getLogs = async () => {
     try {
