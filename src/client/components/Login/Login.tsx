@@ -11,54 +11,59 @@ import {
   Button,
 } from '@chakra-ui/react';
 import { useRef } from 'react';
-// import axios from 'axios';
+import axios from 'axios';
 import { loginUser, loginCreds } from '../../store/reducers/userReducer';
 import { useAppDispatch } from '../../hooks/dispatch';
 
-// const handleLogin = async (
-//   e: React.MouseEvent<HTMLButtonElement>,
-//   username: string,
-//   password: string
-// ) => {
-//   e.preventDefault();
-//   username = usernameRef?.current?.value;
-//   password = passwordRef?.current?.value;
-//   console.log(username, password);
-//   //   console.log(usernameRef?.current?.value, passwordRef?.current?.value);
-//   try {
-//     axios
-//       .post(
-//         'auth/login',
-//         { username: username, password: password },
-//         { withCredentials: true }
-//       )
-//       .then((data) => console.log(data));
-//   } catch (error) {
-//     console.log(`Error sending form to Sever. Error: ${error}`);
-//   }
-// };
 // let username: string;
 // let password: string;
+// LOGIN REFERENCE ??
 
 const Login = () => {
+  const usernameRef = useRef(null);
+  const passwordRef = useRef(null);
   const dispatch = useAppDispatch();
-  const usernameRef = useRef<HTMLInputElement>(null);
-  const passwordRef = useRef<HTMLInputElement>(null);
+  //<HTMLInputElement>
 
-  // Temp Fix for Obj Param
+  // const handleLogin = async (
+  //   e: React.MouseEvent<HTMLButtonElement>,
+  //   username: string,
+  //   password: string
+  // ) => {
+  //   e.preventDefault();
+  //   username = usernameRef?.current?.value;
+  //   password = passwordRef?.current?.value;
+  //   console.log('inside login', username, password);
+  //   //   console.log(usernameRef?.current?.value, passwordRef?.current?.value);
+  //   try {
+  //     axios
+  //       .post(
+  //         'auth/login',
+  //         { username: username, password: password },
+  //         { withCredentials: true }
+  //       )
+  //       .then((data) => console.log(data));
+  //   } catch (error) {
+  //     console.log(`Error sending form to Sever. Error: ${error}`);
+  //   }
+  // };
   const loginCreds: loginCreds = {
     username: usernameRef?.current?.value,
     password: passwordRef?.current?.value,
   };
 
-  const handleLogin = async (e: any, creds: loginCreds) => {
+  // Temp Fix for Obj Param
+  const handleLogin = async (e: any, username: string, password: string) => {
     e.preventDefault();
-    console.log('presend', creds);
-    // console.log();
-    // e.preventDefault()
+    console.log('presend', username);
+    console.log('presend', password);
+
+    const creds: loginCreds = {
+      username: username,
+      password: password,
+    };
     try {
       console.log('insideHL', creds);
-      console.log('checking ref', creds.username);
       dispatch(loginUser(creds));
     } catch (error) {
       console.log(error);
@@ -78,7 +83,17 @@ const Login = () => {
           <ModalBody>
             <Input type="text" placeholder="username" ref={usernameRef} />
             <Input type="password" placeholder="password" ref={passwordRef} />
-            <Button onClick={(e) => handleLogin(e, loginCreds)}>Submit</Button>
+            <Button
+              onClick={(e) =>
+                handleLogin(
+                  e,
+                  usernameRef?.current?.value,
+                  passwordRef?.current?.value
+                )
+              }
+            >
+              Submit
+            </Button>
           </ModalBody>
 
           <ModalFooter>

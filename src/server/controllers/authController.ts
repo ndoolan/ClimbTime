@@ -47,6 +47,8 @@ const userController: userController = {
 
       if (!user) {
         console.log('no user');
+        res.send('No existing account under that username');
+        // return next();
       } else {
         console.log(user?.password);
         console.log(user?.username);
@@ -58,8 +60,8 @@ const userController: userController = {
         } else {
           res.locals.user = 'Invalid Password';
         }
+        return next();
       }
-      return next();
     } catch (error) {
       return next({
         log: error,
