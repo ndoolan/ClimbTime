@@ -1,4 +1,4 @@
-import { Flex, Switch, FormLabel } from '@chakra-ui/react';
+import { Flex, Switch, FormLabel, Spinner } from '@chakra-ui/react';
 import QuickLogForm from '../components/QuickLogForm/QuickLogForm';
 import LogDisplay from '../components/LogDisplay/LogDisplay';
 import LogForm from '../components/LogForm/LogForm';
@@ -9,6 +9,8 @@ import NoUser from '../components/NoUser/NoUser';
 
 const Logs = () => {
   const currentUser = useSelector((state: RootState) => state.user.currentUser);
+  const isLoading = useSelector((state: RootState) => state.user.isLoading);
+
   const [toggle, setToggle] = useState(false);
 
   const handleToggle = () => {
@@ -20,6 +22,10 @@ const Logs = () => {
     return <NoUser />;
   }
 
+  // if(isLoading){
+  //   return <Spinner/>
+  // }
+
   return (
     <Flex direction="row" justifyContent="center" gap={400}>
       <Flex direction="column">
@@ -27,7 +33,7 @@ const Logs = () => {
         {toggle ? <QuickLogForm /> : <LogForm />}
         <FormLabel>Form Toggle</FormLabel>
       </Flex>
-      <LogDisplay />
+      {isLoading ? <Spinner /> : <LogDisplay />}
     </Flex>
   );
 };
