@@ -1,4 +1,4 @@
-import { Flex, Switch, FormLabel, Spinner } from '@chakra-ui/react';
+import { Flex, Switch, FormLabel } from '@chakra-ui/react';
 import QuickLogForm from '../components/QuickLogForm/QuickLogForm';
 import LogDisplay from '../components/LogDisplay/LogDisplay';
 import LogForm from '../components/LogForm/LogForm';
@@ -9,7 +9,6 @@ import NoUser from '../components/NoUser/NoUser';
 
 const Logs = () => {
   const currentUser = useSelector((state: RootState) => state.user.currentUser);
-  const isLoading = useSelector((state: RootState) => state.user.isLoading);
 
   const [toggle, setToggle] = useState(false);
 

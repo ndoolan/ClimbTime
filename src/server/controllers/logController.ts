@@ -28,7 +28,7 @@ const logController: logController = {
     try {
       const { cookies }: { cookies: Record<string, string> } = req;
       const ctUid = cookies['ct-uid'];
-      const { name, grade, location, flash } = req.body;
+      const { name, grade, location, flash, attempts, comments } = req.body;
       console.log('insideCreateLog', name, grade, location, flash);
       console.log('cookie id', ctUid);
 
@@ -41,8 +41,8 @@ const logController: logController = {
               grade: grade,
               location: location,
               flash: flash,
-              comments: 'HardCode',
-              attempts: 10,
+              comments: comments,
+              attempts: attempts,
             },
           },
         }
