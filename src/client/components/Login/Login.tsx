@@ -11,7 +11,6 @@ import {
   Button,
 } from '@chakra-ui/react';
 import { useRef } from 'react';
-import axios from 'axios';
 import { loginUser, loginCreds } from '../../store/reducers/userReducer';
 import { useAppDispatch } from '../../hooks/dispatch';
 
@@ -47,21 +46,15 @@ const Login = () => {
   //     console.log(`Error sending form to Sever. Error: ${error}`);
   //   }
   // };
-  const loginCreds: loginCreds = {
-    username: usernameRef?.current?.value,
-    password: passwordRef?.current?.value,
-  };
 
-  // Temp Fix for Obj Param
   const handleLogin = async (e: any, username: string, password: string) => {
     e.preventDefault();
-    console.log('presend', username);
-    console.log('presend', password);
 
     const creds: loginCreds = {
       username: username,
       password: password,
     };
+
     try {
       console.log('insideHL', creds);
       dispatch(loginUser(creds));

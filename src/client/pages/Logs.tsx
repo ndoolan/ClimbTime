@@ -33,7 +33,7 @@ const Logs = () => {
         {toggle ? <QuickLogForm /> : <LogForm />}
         <FormLabel>Form Toggle</FormLabel>
       </Flex>
-      {isLoading ? <Spinner /> : <LogDisplay />}
+      <LogDisplay />
     </Flex>
   );
 };
