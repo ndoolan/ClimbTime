@@ -11,36 +11,57 @@ import {
   Button,
 } from '@chakra-ui/react';
 import { useRef } from 'react';
-import axios from 'axios';
+import { loginUser, loginCreds } from '../../store/reducers/userReducer';
+import { useAppDispatch } from '../../hooks/dispatch';
 
-const handleLogin = async (
-  e: React.MouseEvent<HTMLButtonElement>,
-  username: string,
-  password: string
-) => {
-  e.preventDefault();
-  //   username = usernameRef?.current?.value;
-  //   password = passwordRef?.current?.value;
-  console.log(username, password);
-  //   console.log(usernameRef?.current?.value, passwordRef?.current?.value);
-  try {
-    axios
-      .post(
-        'auth/login',
-        { username: username, password: password },
-        { withCredentials: true }
-      )
-      .then((data) => console.log(data));
-  } catch (error) {
-    console.log(`Error sending form to Sever. Error: ${error}`);
-  }
-};
 // let username: string;
 // let password: string;
+// LOGIN REFERENCE ??
 
 const Login = () => {
   const usernameRef = useRef(null);
   const passwordRef = useRef(null);
+  const dispatch = useAppDispatch();
+  //<HTMLInputElement>
+
+  // const handleLogin = async (
+  //   e: React.MouseEvent<HTMLButtonElement>,
+  //   username: string,
+  //   password: string
+  // ) => {
+  //   e.preventDefault();
+  //   username = usernameRef?.current?.value;
+  //   password = passwordRef?.current?.value;
+  //   console.log('inside login', username, password);
+  //   //   console.log(usernameRef?.current?.value, passwordRef?.current?.value);
+  //   try {
+  //     axios
+  //       .post(
+  //         'auth/login',
+  //         { username: username, password: password },
+  //         { withCredentials: true }
+  //       )
+  //       .then((data) => console.log(data));
+  //   } catch (error) {
+  //     console.log(`Error sending form to Sever. Error: ${error}`);
+  //   }
+  // };
+
+  const handleLogin = async (e: any, username: string, password: string) => {
+    e.preventDefault();
+
+    const creds: loginCreds = {
+      username: username,
+      password: password,
+    };
+
+    try {
+      console.log('insideHL', creds);
+      dispatch(loginUser(creds));
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (

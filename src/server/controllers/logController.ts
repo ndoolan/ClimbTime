@@ -28,7 +28,9 @@ const logController: logController = {
     try {
       const { cookies }: { cookies: Record<string, string> } = req;
       const ctUid = cookies['ct-uid'];
-      const { name, grade, location, flash } = req.body;
+      const { name, grade, location, flash, attempts, comments } = req.body;
+      console.log('insideCreateLog', name, grade, location, flash);
+      console.log('cookie id', ctUid);
 
       const user = await User.findByIdAndUpdate(
         { _id: ctUid },
@@ -39,6 +41,8 @@ const logController: logController = {
               grade: grade,
               location: location,
               flash: flash,
+              comments: comments,
+              attempts: attempts,
             },
           },
         }
@@ -47,13 +51,14 @@ const logController: logController = {
       if (!user) {
         throw new Error('User not found');
       }
+      console.log('are there logs', user?.logs);
       res.locals.logs = user?.logs;
       return next();
     } catch (error) {
       return next({
         log: 'error occurred creating the new climb',
         status: 400,
-        message: { error: 'invalid climb input' },
+        message: { error: error },
       });
     }
   },

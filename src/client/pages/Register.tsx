@@ -2,30 +2,33 @@ import {
   Flex,
   FormControl,
   FormLabel,
-  FormHelperText,
+  // FormHelperText,
   Input,
   Button,
 } from '@chakra-ui/react';
 import { useForm } from 'react-hook-form';
-import axios from 'axios';
-
-const submitForm = async (data: any) => {
-  try {
-    axios.post('auth/register', data).then((data) => console.log(data));
-  } catch (error) {
-    console.log(`Error sending form to Sever. Error: ${error}`);
-  }
-};
+import { useAppDispatch } from '../hooks/dispatch';
+import { registerUser, registerForm } from '../store/reducers/userReducer';
 
 export const Register = () => {
+  const dispatch = useAppDispatch();
+
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm<registerForm>();
+
+  const submitForm = async (registerForm: registerForm) => {
+    try {
+      dispatch(registerUser(registerForm));
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
-    <form onSubmit={handleSubmit((data) => submitForm(data))}>
+    <form onSubmit={handleSubmit(submitForm)}>
       <Flex direction="column" p={4} gap={4}>
         <FormControl>
           <FormLabel>Username</FormLabel>

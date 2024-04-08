@@ -14,7 +14,7 @@ interface userController {
 const userController: userController = {
   async createUser(req, res, next) {
     try {
-      const { username, password, email } = req.body;
+      const { username, password, email } = req.body.registerForm;
 
       // Check if username is taken
       const user = await User.findOne({ username: username });
@@ -41,11 +41,14 @@ const userController: userController = {
 
   async verifyUser(req, res, next) {
     try {
-      const { username, password } = req.body;
+      console.log('verify body', req.body);
+      const { username, password } = req.body.loginCreds;
       const user = await User.findOne({ username: username });
 
       if (!user) {
         console.log('no user');
+        res.send('No existing account under that username');
+        // return next();
       } else {
         console.log(user?.password);
         console.log(user?.username);
@@ -57,8 +60,8 @@ const userController: userController = {
         } else {
           res.locals.user = 'Invalid Password';
         }
+        return next();
       }
-      return next();
     } catch (error) {
       return next({
         log: error,

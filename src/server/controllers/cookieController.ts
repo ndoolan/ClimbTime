@@ -9,13 +9,14 @@ interface cookieController {
 const cookieController: cookieController = {
   async setCookie(_req, res, next) {
     try {
-      console.log('inside cookie');
       const user_id = res.locals.user._id;
+      console.log('inside cookie', user_id);
       res.cookie('ct-uid', user_id, {
         httpOnly: false,
-        // sameSite: 'None',
+        sameSite: 'lax',
         secure: true,
       });
+      console.log('post cookie');
       return next();
     } catch (error) {
       return next({

@@ -12,9 +12,9 @@ authRouter.post(
   cookieController.setCookie,
   (_req: Request, res: Response) => {
     if (!res.locals.user._id) {
-      res.status(200).json('Invalid Credentials');
+      res.status(200).send('Invalid Credentials');
     } else {
-      res.status(200).json('logged in');
+      res.status(200).send('logged in');
     }
   }
 );
@@ -24,7 +24,6 @@ authRouter.post(
   userController.createUser,
   cookieController.setCookie,
   (_req: Request, res: Response) => {
-    console.log('outside mid');
     res.status(200).json(res.locals.user);
   }
 );

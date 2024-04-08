@@ -5,6 +5,8 @@ const climbSchema = new Schema({
   grade: { type: String, required: true },
   location: { type: String, required: true },
   flash: { type: Boolean, required: true },
+  attempts: { type: Number },
+  comments: { type: String },
 });
 
 const userSchema = new Schema({
