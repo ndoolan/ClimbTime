@@ -22,7 +22,7 @@ authRouter.post(
 authRouter.post(
   '/register',
   userController.createUser,
-  // cookieController.setCookie,
+  cookieController.setCookie,
   (_req: Request, res: Response) => {
     res.status(200).json(res.locals.user);
   }

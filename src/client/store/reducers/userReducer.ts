@@ -32,8 +32,8 @@ export const loginUser = createAsyncThunk(
     try {
       const response = await axios.post(
         'http://localhost:3000/auth/login',
-        { loginCreds: loginCreds }
-        // { withCredentials: true } // we haven't been assigned the cookie at this point
+        { loginCreds: loginCreds },
+        { withCredentials: true } // we haven't been assigned the cookie at this point
       );
       console.log('response data in UR', response);
       return response.data; // shouldn't we get an entire user obj from the DB
