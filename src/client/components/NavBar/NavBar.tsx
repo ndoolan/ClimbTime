@@ -2,6 +2,15 @@ import './NavBar.scss';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Login from '../Login/Login';
+import {
+  Flex,
+  Stack,
+  Box,
+  Button,
+  useColorMode,
+  useColorModeValue,
+} from '@chakra-ui/react';
+import { MoonIcon, SunIcon } from '@chakra-ui/icons';
 
 const handleLogout = async () => {
   try {
@@ -13,18 +22,25 @@ const handleLogout = async () => {
 
 const NavBar = () => {
   const navigate = useNavigate();
+  const { colorMode, toggleColorMode } = useColorMode();
+  const bgColor = useColorModeValue('gray.300', 'black.800'); // plug in new Light Mode Color?
+
   return (
-    <div className="navWrapper">
-      <nav className="main-nav">
-        <p>Home</p>
-        <button onClick={() => navigate('/logs')}>Logs</button>
-        <button onClick={() => navigate('/metrics')}>Metrics</button>
-        <button onClick={() => navigate('/register')}>Register</button>
-        <Login />
-        <button onClick={handleLogout}>Logout</button>
-        <p>Contact</p>
-      </nav>
-    </div>
+    <Box bg={bgColor}>
+      <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
+        <Button onClick={() => navigate('/logs')}>Logs</Button>
+        <Button onClick={() => navigate('/metrics')}>Metrics</Button>
+        <Button onClick={() => navigate('/register')}>Register</Button>
+        <Button onClick={toggleColorMode}>
+          {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
+        </Button>
+
+        <Flex>
+          <Login />
+          <Button onClick={handleLogout}>Logout</Button>
+        </Flex>
+      </Flex>
+    </Box>
   );
 };
 

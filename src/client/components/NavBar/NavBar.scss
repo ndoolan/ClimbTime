@@ -1,14 +1,13 @@
 // @import './variables.scss'
 
 .navWrapper {
-    width: 100%;
-    background-color: black;
-    color: white;
+  width: 100%;
+  // background-color: black;
+  color: white;
 }
 
 .main-nav {
-    display: flex;
-    flex-direction: row;
-    gap: 5em;
-
+  display: flex;
+  flex-direction: row;
+  gap: 5em;
 }
