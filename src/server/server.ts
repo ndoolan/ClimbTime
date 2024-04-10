@@ -20,9 +20,15 @@ app.use(cookieParser());
 dotenv.config();
 
 const db: string = process.env.URI!;
-mongoose.connect(db).then(() => {
-  console.log('Connected to DB');
-});
+
+mongoose
+  .connect(db, { serverSelectionTimeoutMS: 5000 })
+  .then(() => {
+    console.log('Connected to DB');
+  })
+  .catch((err) => {
+    console.log(`Error starting DB ${err}`);
+  });
 
 app.use('/auth', authRouter);
 app.use('/logs', logsRouter);
