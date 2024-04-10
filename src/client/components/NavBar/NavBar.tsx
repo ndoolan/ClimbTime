@@ -26,18 +26,28 @@ const NavBar = () => {
   const bgColor = useColorModeValue('gray.300', 'black.800'); // plug in new Light Mode Color?
 
   return (
-    <Box bg={bgColor}>
+    <Box bg={bgColor} px={4}>
       <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
-        <Button onClick={() => navigate('/logs')}>Logs</Button>
-        <Button onClick={() => navigate('/metrics')}>Metrics</Button>
-        <Button onClick={() => navigate('/register')}>Register</Button>
-        <Button onClick={toggleColorMode}>
-          {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
-        </Button>
+        <Stack direction={'row'} spacing={8}>
+          <Button bg="transparent" onClick={() => navigate('/logs')}>
+            Logs
+          </Button>
+          <Button bg="transparent" onClick={() => navigate('/metrics')}>
+            Metrics
+          </Button>
+          <Button bg="transparent" onClick={() => navigate('/register')}>
+            Register
+          </Button>
+          <Button bg="transparent" onClick={toggleColorMode}>
+            {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
+          </Button>
+        </Stack>
 
         <Flex>
-          <Login />
-          <Button onClick={handleLogout}>Logout</Button>
+          <Stack direction={'row'} spacing={5}>
+            <Login />
+            <Button bg="transparent" onClick={handleLogout}>Logout</Button>
+          </Stack>
         </Flex>
       </Flex>
     </Box>
