@@ -29,7 +29,7 @@ const NavBar = () => {
     <Box bg={bgColor} px={4}>
       <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
         <Stack direction={'row'} spacing={8}>
-          <Button bg="transparent" onClick={() => navigate('/home')}>
+          <Button bg="transparent" onClick={() => navigate('/')}>
             Home
           </Button>
           <Button bg="transparent" onClick={() => navigate('/logs')}>
