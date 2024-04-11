@@ -29,6 +29,9 @@ const NavBar = () => {
     <Box bg={bgColor} px={4}>
       <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
         <Stack direction={'row'} spacing={8}>
+          <Button bg="transparent" onClick={() => navigate('/home')}>
+            Home
+          </Button>
           <Button bg="transparent" onClick={() => navigate('/logs')}>
             Logs
           </Button>
@@ -46,7 +49,9 @@ const NavBar = () => {
         <Flex>
           <Stack direction={'row'} spacing={5}>
             <Login />
-            <Button bg="transparent" onClick={handleLogout}>Logout</Button>
+            <Button bg="transparent" onClick={handleLogout}>
+              Logout
+            </Button>
           </Stack>
         </Flex>
       </Flex>

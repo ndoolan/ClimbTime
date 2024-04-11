@@ -1,15 +1,15 @@
 import { Outlet, Route, Routes } from 'react-router-dom';
 import NavBar from './components/NavBar/NavBar';
-import Metrics from './pages/Metrics';
-import NotFound from './pages/NotFound';
-import Logs from './pages/Logs';
-import Register from './pages/Register';
+
+import Footer from './components/Footer/Footer';
+import { Home, Metrics, Register, Logs, NotFound } from './pages';
 
 const Layout = () => {
   return (
     <>
       <NavBar />
       <Outlet />
+      <Footer />
     </>
   );
 };
@@ -19,6 +19,7 @@ const App = () => {
     <>
       <Routes>
         <Route path="/" element={<Layout />}>
+          <Route path="/home" element={<Home />} />
           <Route path="/register" element={<Register />} />
           <Route path="/metrics" element={<Metrics />} />
           <Route path="/logs" element={<Logs />} />
