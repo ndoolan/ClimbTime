@@ -1,7 +1,7 @@
 import './NavBar.scss';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import Login from '../Login/Login';
+import Login from '../Login';
 import {
   Flex,
   Stack,
@@ -41,13 +41,13 @@ const NavBar = () => {
           <Button bg="transparent" onClick={() => navigate('/register')}>
             Register
           </Button>
-          <Button bg="transparent" onClick={toggleColorMode}>
-            {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
-          </Button>
         </Stack>
 
         <Flex>
           <Stack direction={'row'} spacing={5}>
+            <Button bg="transparent" onClick={toggleColorMode}>
+              {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
+            </Button>
             <Login />
             <Button bg="transparent" onClick={handleLogout}>
               Logout

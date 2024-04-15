@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import type { RootState } from '../store';
-import NoUser from '../components/NoUser/NoUser';
+import NoUser from '../components/NoUser';
 
 const Metrics = () => {
   const currentUser = useSelector((state: RootState) => state.user.currentUser);

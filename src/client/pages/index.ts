@@ -6,4 +6,4 @@ import Register from './Register';
 
 export { Home, Logs, Metrics, NotFound, Register };
 
-// export { default } from './../pages';
+// export { default } from './Home';
