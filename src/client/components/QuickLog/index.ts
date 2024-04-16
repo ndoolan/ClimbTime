@@ -1,1 +1,1 @@
-export { default} from './QuickLog'
+export { default } from './QuickLog';

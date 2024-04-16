@@ -33,6 +33,9 @@ mongoose
 app.use('/auth', authRouter);
 app.use('/logs', logsRouter);
 
+// serve static files
+app.use(express.static(path.resolve(__dirname, '../client/assets')));
+
 app.get('*', (_req: Request, res: Response) => {
   res.sendFile(path.resolve(__dirname, '../client/index.html'));
 });

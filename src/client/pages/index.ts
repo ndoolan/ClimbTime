@@ -5,5 +5,3 @@ import NotFound from './NotFound';
 import Register from './Register';
 
 export { Home, Logs, Metrics, NotFound, Register };
-
-// export { default } from './Home';
