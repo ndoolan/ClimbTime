@@ -1,7 +1,16 @@
 import './NavBar.scss';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import Login from '../Login/Login';
+import Login from '../Login';
+import {
+  Flex,
+  Stack,
+  Box,
+  Button,
+  useColorMode,
+  useColorModeValue,
+} from '@chakra-ui/react';
+import { MoonIcon, SunIcon } from '@chakra-ui/icons';
 
 const handleLogout = async () => {
   try {
@@ -13,18 +22,40 @@ const handleLogout = async () => {
 
 const NavBar = () => {
   const navigate = useNavigate();
+  const { colorMode, toggleColorMode } = useColorMode();
+  const bgColor = useColorModeValue('gray.300', 'black.800'); // plug in new Light Mode Color?
+
   return (
-    <div className="navWrapper">
-      <nav className="main-nav">
-        <p>Home</p>
-        <button onClick={() => navigate('/logs')}>Logs</button>
-        <button onClick={() => navigate('/metrics')}>Metrics</button>
-        <button onClick={() => navigate('/register')}>Register</button>
-        <Login />
-        <button onClick={handleLogout}>Logout</button>
-        <p>Contact</p>
-      </nav>
-    </div>
+    <Box bg={bgColor} px={4}>
+      <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
+        <Stack direction={'row'} spacing={8}>
+          <Button bg="transparent" onClick={() => navigate('/')}>
+            Home
+          </Button>
+          <Button bg="transparent" onClick={() => navigate('/logs')}>
+            Logs
+          </Button>
+          <Button bg="transparent" onClick={() => navigate('/metrics')}>
+            Metrics
+          </Button>
+          <Button bg="transparent" onClick={() => navigate('/register')}>
+            Register
+          </Button>
+        </Stack>
+
+        <Flex>
+          <Stack direction={'row'} spacing={5}>
+            <Button bg="transparent" onClick={toggleColorMode}>
+              {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
+            </Button>
+            <Login />
+            <Button bg="transparent" onClick={handleLogout}>
+              Logout
+            </Button>
+          </Stack>
+        </Flex>
+      </Flex>
+    </Box>
   );
 };
 

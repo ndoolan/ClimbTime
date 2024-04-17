@@ -1,10 +1,9 @@
-import QuickLog from '../QuickLog/QuickLog';
 import { Flex, Spinner } from '@chakra-ui/react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios, { AxiosResponse } from 'axios';
 import { useSelector } from 'react-redux';
 import type { RootState } from '../../store';
-import { useEffect } from 'react';
+import QuickLog from '../QuickLog';
 
 interface quickLogData {
   name: string;

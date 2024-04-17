@@ -18,6 +18,12 @@
     "noUnusedParameters": true,
     "plugins": [{ "name": "typescript-plugin-css-modules" }]
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "types", "webpack.config.ts"],
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "types",
+    "webpack.config.ts",
+    "global.d.ts"
+  ],
   "exclude": ["node_modules"]
 }

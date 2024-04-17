@@ -66,7 +66,9 @@ const Login = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <>
-      <Button onClick={onOpen}>Login</Button>
+      <Button bg="transparent" onClick={onOpen}>
+        Login
+      </Button>
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
