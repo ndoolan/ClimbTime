@@ -21,8 +21,15 @@ const Footer = () => {
 
   return (
     <Box bg={bgColor} px={4} mx={10}>
-      <Flex id="iconsContainer" h={16} flex="row" justifyContent="center">
-        <HStack spacing={4}>
+      <Flex
+        id="iconsContainer"
+        h={24}
+        flexDirection="column"
+        justifyContent="center"
+        alignItems="center"
+        gap={2}
+      >
+        <HStack spacing={4} justifySelf="center">
           <Image
             boxSize="2em"
             src={instagramIcon}
@@ -48,9 +55,7 @@ const Footer = () => {
             id="tiktok"
           ></Image>
         </HStack>
-        <Text justifySelf="center">
-          Copyright @ 2024 Metrics R Us. All rights reserved.
-        </Text>
+        <Text>Copyright @ 2024 Metrics R Us. All rights reserved.</Text>
       </Flex>
     </Box>
   );
