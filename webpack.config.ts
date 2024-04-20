@@ -60,8 +60,6 @@ const config: Configuration = {
     },
     historyApiFallback: true,
     proxy: {
-      // context: ['/'],
-      // target: 'http://localhost:3000',
       '/': 'http://localhost:3000',
     },
     port: 8080,
@@ -72,7 +70,6 @@ const config: Configuration = {
       template: './src/client/index.html',
     }),
     new Dotenv(),
-    // new ReactRefreshWebpackPlugin(),
   ],
 };
 

@@ -24,9 +24,9 @@ const Logs = () => {
   return (
     <Flex direction="row" justifyContent="center" gap={400} py={4}>
       <Flex direction="column">
+        <FormLabel>Form Toggle</FormLabel>
         <Switch onChange={handleToggle} />
         {toggle ? <QuickLogForm /> : <LogForm />}
-        <FormLabel>Form Toggle</FormLabel>
       </Flex>
       <LogDisplay />
     </Flex>
