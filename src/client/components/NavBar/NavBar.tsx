@@ -32,6 +32,9 @@ const NavBar = () => {
           <Button bg="transparent" onClick={() => navigate('/')}>
             Home
           </Button>
+          <Button>
+            Check 
+          </Button>
           <Button bg="transparent" onClick={() => navigate('/logs')}>
             Logs
           </Button>
