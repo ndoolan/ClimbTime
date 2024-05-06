@@ -5,7 +5,7 @@ const Home = () => {
     // <Box justifyContent="center" alignItems="center">
     //   <Flex>
     <>
-      <Image src="./JimmyWebbJPEG.jpg" alt="Climbing Photo"></Image>
+      <Image src="./Joes_Carson.jpg" alt="Climbing Photo"></Image>
     </>
     //   </Flex>
     // </Box>
