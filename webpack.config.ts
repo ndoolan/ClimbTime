@@ -59,9 +59,13 @@ const config: Configuration = {
       directory: path.resolve(__dirname, 'client'),
     },
     historyApiFallback: true,
-    proxy: {
-      '/': 'http://localhost:3000',
-    },
+    proxy: [
+      {
+        context: ['/'],
+        target: 'http://localhost:3000',
+        changeOrigin: true,
+      },
+    ],
     port: 8080,
     hot: true,
   },
