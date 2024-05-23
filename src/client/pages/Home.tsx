@@ -1,11 +1,13 @@
-import { Image, Box, Flex } from '@chakra-ui/react';
+import { Image, useColorMode } from '@chakra-ui/react';
 
 const Home = () => {
+  const { colorMode } = useColorMode()
+  console.log(colorMode)
   return (
     // <Box justifyContent="center" alignItems="center">
     //   <Flex>
     <>
-      <Image src="./JimmyWebbJPEG.jpg" alt="Climbing Photo"></Image>
+    {colorMode === "light" ? <Image src="./Joes_Justin.jpg" alt="Climbing Photo"></Image> : <Image src="./Joes_Carson.jpg" alt="Climbing Photo"></Image> }
     </>
     //   </Flex>
     // </Box>
