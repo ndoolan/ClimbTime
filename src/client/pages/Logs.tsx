@@ -22,7 +22,7 @@ const Logs = () => {
   }
 
   return (
-    <Flex direction="row" justifyContent="center" gap={400} py={4}>
+    <Flex direction="row" justifyContent="center" gap={400} py={10}>
       <Flex direction="column">
         <FormLabel>Form Toggle</FormLabel>
         <Switch onChange={handleToggle} />

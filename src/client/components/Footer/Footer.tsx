@@ -17,10 +17,10 @@ import tiktokIcon from '../../assets/Tiktok.png';
 
 const Footer = () => {
   // const { colorMode, toggleColorMode } = useColorMode();
-  const bgColor = useColorModeValue('gray.300', 'black.800');
+  const bgColor = useColorModeValue('gray.300', 'blackAlpha.700');
 
   return (
-    <Box bg={bgColor} px={4} mx={10}>
+    <Box bg={bgColor} px={4}>
       <Flex
         id="iconsContainer"
         h={24}

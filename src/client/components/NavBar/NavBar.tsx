@@ -23,7 +23,7 @@ const handleLogout = async () => {
 const NavBar = () => {
   const navigate = useNavigate();
   const { colorMode, toggleColorMode } = useColorMode();
-  const bgColor = useColorModeValue('gray.100', 'black.900'); // plug in new Light Mode Color?
+  const bgColor = useColorModeValue('gray.100', 'blackAlpha.700'); // plug in new Light Mode Color?
 
   return (
     <Box bg={bgColor} px={4}>
