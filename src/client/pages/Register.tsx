@@ -29,7 +29,7 @@ export const Register = () => {
 
   return (
     <form onSubmit={handleSubmit(submitForm)}>
-      <Flex direction="column" py={10} gap={4}>
+      <Flex direction="column" p={10} gap={4}>
         <FormControl>
           <FormLabel>Username</FormLabel>
           <Input
