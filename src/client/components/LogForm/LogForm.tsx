@@ -13,7 +13,7 @@ import {
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
 
-const submitLog = async (data: any) => {
+const submitLog = async (data: any) => { // update data w. props interface
   console.log(data);
   try {
     axios.post('logs/create', data).then((data) => console.log(data));
@@ -23,7 +23,7 @@ const submitLog = async (data: any) => {
   }
 };
 
-const LogForm = () => {
+const LogForm = (): JSX.Element => {
   const {
     register,
     handleSubmit,

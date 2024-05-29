@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux';
 import type { RootState } from '../store';
 import NoUser from '../components/NoUser';
 
-const Logs = () => {
+const Logs = (): JSX.Element => {
   const currentUser = useSelector((state: RootState) => state.user.currentUser);
 
   const [toggle, setToggle] = useState(false);
@@ -22,7 +22,7 @@ const Logs = () => {
   }
 
   return (
-    <Flex direction="row" justifyContent="center" gap={400} py={4}>
+    <Flex direction="row" justifyContent="center" gap={400} p={10}>
       <Flex direction="column">
         <FormLabel>Form Toggle</FormLabel>
         <Switch onChange={handleToggle} />

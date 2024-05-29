@@ -55,7 +55,8 @@ const config: Configuration = {
   },
   devServer: {
     static: {
-      publicPath: './src/client',
+      // changed from ./src/client
+      publicPath: '/build',
       directory: path.resolve(__dirname, 'client'),
     },
     historyApiFallback: true,

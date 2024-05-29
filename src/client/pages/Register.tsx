@@ -10,7 +10,7 @@ import { useForm } from 'react-hook-form';
 import { useAppDispatch } from '../hooks/dispatch';
 import { registerUser, registerForm } from '../store/reducers/userReducer';
 
-export const Register = () => {
+export const Register = (): JSX.Element => {
   const dispatch = useAppDispatch();
 
   const {
@@ -29,7 +29,7 @@ export const Register = () => {
 
   return (
     <form onSubmit={handleSubmit(submitForm)}>
-      <Flex direction="column" p={4} gap={4}>
+      <Flex direction="column" p={10} gap={4}>
         <FormControl>
           <FormLabel>Username</FormLabel>
           <Input
