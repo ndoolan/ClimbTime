@@ -15,7 +15,7 @@ import tiktokIcon from '../../assets/Tiktok.png';
 
 // map off array of icons
 
-const Footer = () => {
+const Footer = (): JSX.Element => {
   // const { colorMode, toggleColorMode } = useColorMode();
   const bgColor = useColorModeValue('gray.300', 'blackAlpha.700');
 

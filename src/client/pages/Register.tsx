@@ -10,7 +10,7 @@ import { useForm } from 'react-hook-form';
 import { useAppDispatch } from '../hooks/dispatch';
 import { registerUser, registerForm } from '../store/reducers/userReducer';
 
-export const Register = () => {
+export const Register = (): JSX.Element => {
   const dispatch = useAppDispatch();
 
   const {

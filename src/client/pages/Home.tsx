@@ -1,6 +1,6 @@
 import { Image, useColorMode } from '@chakra-ui/react';
 
-const Home = () => {
+const Home = (): JSX.Element => {
   const { colorMode } = useColorMode()
   return (
 

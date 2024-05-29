@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux';
 import type { RootState } from '../store';
 import NoUser from '../components/NoUser';
 
-const Logs = () => {
+const Logs = (): JSX.Element => {
   const currentUser = useSelector((state: RootState) => state.user.currentUser);
 
   const [toggle, setToggle] = useState(false);

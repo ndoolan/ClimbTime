@@ -20,7 +20,7 @@ const handleLogout = async () => {
   }
 };
 
-const NavBar = () => {
+const NavBar = (): JSX.Element => {
   const navigate = useNavigate();
   const { colorMode, toggleColorMode } = useColorMode();
   const bgColor = useColorModeValue('gray.100', 'blackAlpha.700'); // plug in new Light Mode Color?

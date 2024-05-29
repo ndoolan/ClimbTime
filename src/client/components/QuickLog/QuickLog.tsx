@@ -9,7 +9,7 @@ interface QuickLogProps {
   flash: boolean;
   _id: string;
 }
-
+// : JSX.Element
 const QuickLog: React.FC<QuickLogProps> = ({
   name,
   location,

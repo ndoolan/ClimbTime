@@ -21,7 +21,7 @@ const submitQuickLog = async (data: any) => {
   }
 };
 
-const QuickLogForm = () => {
+const QuickLogForm = (): JSX.Element => {
   const {
     register,
     handleSubmit,

@@ -13,14 +13,10 @@ import {
 import { useRef } from 'react';
 import { loginUser, loginCreds } from '../../store/reducers/userReducer';
 import { useAppDispatch } from '../../hooks/dispatch';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../store';
 
-// let username: string;
-// let password: string;
-// LOGIN REFERENCE ??
 
-const Login = () => {
+
+const Login = (): JSX.Element => {
   const usernameRef = useRef(null);
   const passwordRef = useRef(null);
   const dispatch = useAppDispatch();

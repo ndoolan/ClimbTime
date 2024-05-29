@@ -13,7 +13,7 @@ interface quickLogData {
   _id: string;
 }
 
-const LogDisplay = () => {
+const LogDisplay = (): JSX.Element => {
   const isLoading = useSelector((state: RootState) => state.user.isLoading);
   const currentUser = useSelector((state: RootState) => state.user.currentUser);
   const [logs, setLogs] = useState<quickLogData[]>([]);

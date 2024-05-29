@@ -3,7 +3,7 @@ import { Flex } from '@chakra-ui/react';
 import type { RootState } from '../store';
 import NoUser from '../components/NoUser';
 
-const Metrics = () => {
+const Metrics = (): JSX.Element => {
   const currentUser = useSelector((state: RootState) => state.user.currentUser);
 
   if (!currentUser) {

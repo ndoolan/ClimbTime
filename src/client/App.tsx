@@ -3,7 +3,7 @@ import NavBar from './components/NavBar';
 import Footer from './components/Footer';
 import { Home, Metrics, Register, Logs, NotFound } from './pages';
 
-const Layout = () => {
+const Layout = (): JSX.Element => {
   return (
     <>
       <NavBar />
@@ -13,7 +13,7 @@ const Layout = () => {
   );
 };
 
-const App = () => {
+const App = (): JSX.Element => {
   return (
     <>
       <Routes>
